@@ -7,6 +7,7 @@ class Game {
         // this.board = new Board();
         this.snake = new Snake();
         this.food = new Food();
+        this.score = 0;
         this.on = true;
     }
 
@@ -16,6 +17,10 @@ class Game {
 
     showBoard() {
         // this.board.render();
+    }
+
+    showScore() {
+        document.querySelector('.board__score').innerHTML = this.score;
     }
 
     showFood() {
@@ -29,10 +34,16 @@ class Game {
 
     showSnake() {
         const index = this.index(this.snake.x, this.snake.y);
-        // this.fields = document.querySelectorAll('.board__field');
-
         document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
         this.fields[index].classList.add('snake');
+
+        // let indexes = this.snake.body.map(el => {
+        //     return this.index(el.x, el.y);
+        // });
+        // document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
+        // indexes.forEach(el => {
+        //     this.fields[el].classList.add('snake');
+        // })
     }
 
     moveSnake() {
@@ -57,6 +68,7 @@ class Game {
         }
 
         this.showSnake();
+        this.checkFoodCollision();
     }
 
     turnSnake(e) {
@@ -78,14 +90,17 @@ class Game {
 
     checkFoodCollision() {
         if (this.food.x === this.snake.x && this.food.y === this.snake.y) {
+            this.score++;
+            this.showScore();
 
+            this.hideFood();
+            this.food = new Food();
+            this.showFood();
         }
     }
 
-    start() {
-        this.moveInterval = setInterval(() => {
-            this.moveSnake();
-        }, 250);
+    hideFood() {
+        document.querySelectorAll('.food').forEach(el => el.classList.remove('food'));
     }
 
     gameOver() {
@@ -96,6 +111,13 @@ class Game {
         }
     }
 
+    start() {
+        this.showScore();
+
+        this.moveInterval = setInterval(() => {
+            this.moveSnake();
+        }, 500);
+    }
 }
 
 export {Game};

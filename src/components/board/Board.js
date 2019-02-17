@@ -3,13 +3,10 @@ import './Board.scss';
 class Score {
     constructor() {
         this.scoreField = document.createElement('span');
-        this.score = 0;
     }
 
     render(root) {
         this.scoreField.classList.add('board__score');
-        this.scoreField.innerHTML = this.score;
-
         root.appendChild(this.scoreField);
     }
 }
@@ -30,7 +27,6 @@ class Board {
     constructor() {
         this.board = document.createElement('div');
         this.boardClass = 'board';
-        // this.root = document.getElementById('app');
     }
 
     render(root) {
