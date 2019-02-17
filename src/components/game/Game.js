@@ -30,7 +30,10 @@ class Game {
         let moveInterval = setInterval(() => {
             this.snake.move();
         }, 500);
+
+        this.snake.checkWallCollision();
     }
+
 }
 
 export {Game};

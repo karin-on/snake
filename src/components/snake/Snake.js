@@ -12,30 +12,16 @@ class Snake {
     }
 
     show() {
+        // this.move();
+
         this.index = this.x + this.y * 10;
         this.fields = document.querySelectorAll('.board__field');
-        
+
         document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
         this.fields[this.index].classList.add('snake');
     }
 
     move() {
-        // const index = Math.floor(Math.random() * 4);
-        // const currentDirection = this.directions[index];
-
-        let newIndex = 1;
-
-        // switch (currentDirection) {
-        //     case 'right': this.index = this.x + 1;
-        //         break;
-        //     case 'left': this.index = this.x - 1;
-        //         break;
-        //     case 'up': this.index = this.y - 1;
-        //         break;
-        //     case 'down': this.index = this.y + 1;
-        //         break;
-        // }
-
         switch (this.directions) {
             case 'right': this.x++;
                 break;
@@ -51,8 +37,6 @@ class Snake {
     }
 
     changeDirection(e) {
-        console.log(e.key);
-
         switch (e.key) {
             case 'ArrowRight': this.directions = 'right';
                 break;
@@ -63,7 +47,12 @@ class Snake {
             case 'ArrowDown': this.directions = 'down';
                 break;
         }
-        console.log(this.directions);
+    }
+
+    checkWallCollision() {
+        if (this.x > 9 || this.x < 0 || this.y > 9 || this.y < 0) {
+            console.log('game over');
+        }
     }
 
 
