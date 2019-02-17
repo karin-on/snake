@@ -6,17 +6,30 @@ class Game {
     constructor() {
         this.msg = 'start!';
         this.board = new Board();
+        this.snake = new Snake();
+        this.food = new Food();
+    }
+
+    showBoard() {
+        this.board.render();
+    }
+
+    showSnake() {
+        this.snake.show();
+    }
+
+    showFood() {
+        this.food.show();
+    }
+
+    turnSnake(e) {
+        this.snake.changeDirection(e);
     }
 
     start() {
-        this.board.render();
-
-        let snake = new Snake();
-        // snake.show();
-        snake.move();
-
-        let food = new Food();
-        food.show();
+        let moveInterval = setInterval(() => {
+            this.snake.move();
+        }, 500);
     }
 }
 

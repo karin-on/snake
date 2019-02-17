@@ -9,18 +9,17 @@ class Snake {
         this.x = 0;
         this.y = 0;
         this.lenght = 3;
-        this.fields = document.querySelectorAll('.board__field');
     }
 
     show() {
         this.index = this.x + this.y * 10;
-
+        this.fields = document.querySelectorAll('.board__field');
+        
         document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
         this.fields[this.index].classList.add('snake');
     }
 
     move() {
-
         // const index = Math.floor(Math.random() * 4);
         // const currentDirection = this.directions[index];
 
@@ -37,21 +36,37 @@ class Snake {
         //         break;
         // }
 
-        let xxx = setInterval(() => {
-            switch (this.directions) {
-                case 'right': this.x++;
-                    break;
-                case 'left': this.x--;
-                    break;
-                case 'up': this.y--;
-                    break;
-                case 'down': this.y++;
-                    break;
-            }
-            this.show();
-        }, 500);
+        switch (this.directions) {
+            case 'right': this.x++;
+                break;
+            case 'left': this.x--;
+                break;
+            case 'up': this.y--;
+                break;
+            case 'down': this.y++;
+                break;
+        }
 
+        this.show();
     }
+
+    changeDirection(e) {
+        console.log(e.key);
+
+        switch (e.key) {
+            case 'ArrowRight': this.directions = 'right';
+                break;
+            case 'ArrowLeft': this.directions = 'left';
+                break;
+            case 'ArrowUp': this.directions = 'up';
+                break;
+            case 'ArrowDown': this.directions = 'down';
+                break;
+        }
+        console.log(this.directions);
+    }
+
+
 }
 
 export {Snake};
