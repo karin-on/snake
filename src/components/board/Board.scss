@@ -7,6 +7,14 @@
   border: 1px solid rgba(102, 51, 153, 0.5);
 }
 
+.board__score {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 20px 0;
+}
+
 .board__field {
   width: 100px;
   height: 100px;

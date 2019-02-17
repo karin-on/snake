@@ -1,10 +1,10 @@
-import {Board} from '../board/Board';
+import {Score} from "../board/Board";
 import {Snake} from "../snake/Snake";
 import {Food} from "../food/Food";
 
 class Game {
     constructor() {
-        this.board = new Board();
+        // this.board = new Board();
         this.snake = new Snake();
         this.food = new Food();
         this.on = true;
@@ -15,7 +15,7 @@ class Game {
     }
 
     showBoard() {
-        this.board.render();
+        // this.board.render();
     }
 
     showFood() {
@@ -59,7 +59,6 @@ class Game {
         this.showSnake();
     }
 
-
     turnSnake(e) {
         this.changeDirection(e);
     }
@@ -74,6 +73,12 @@ class Game {
                 break;
             case 'ArrowDown': this.snake.directions = 'down';
                 break;
+        }
+    }
+
+    checkFoodCollision() {
+        if (this.food.x === this.snake.x && this.food.y === this.snake.y) {
+
         }
     }
 
