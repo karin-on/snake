@@ -37,6 +37,8 @@ class Game {
         document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
         this.fields[index].classList.add('snake');
 
+        //TODO: odkomentować
+
         // let indexes = this.snake.body.map(el => {
         //     return this.index(el.x, el.y);
         // });
@@ -47,6 +49,8 @@ class Game {
     }
 
     moveSnake() {
+        //TODO: ruch snake'a: pushowanie nowej głowy, wycinanie ostatniej pozycji z tablicy
+
         //najpierw zwiększam index!!!
         switch (this.snake.directions) {
             case 'right': this.snake.x++;
