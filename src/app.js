@@ -1,8 +1,10 @@
-import {Game} from './components/game/game.js';
+import {Game} from './components/game/Game';
 
-let game = new Game();
-console.log(game.game);
+import './main.scss';
+
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('app').innerHTML = game.game;
+    let game = new Game();
+    console.log(game.msg);
+    // game.start();
 });
