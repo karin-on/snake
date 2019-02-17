@@ -1,5 +1,11 @@
 import './Board.scss';
 
+class Score {
+    constructor() {
+        this.scoreField = document.createElement('')
+        this.score = 0;
+    }
+}
 
 class Field {
     constructor() {
