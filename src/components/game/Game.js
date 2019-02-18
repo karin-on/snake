@@ -51,7 +51,6 @@ class Game {
     moveSnake() {
         //TODO: ruch snake'a: pushowanie nowej głowy, wycinanie ostatniej pozycji z tablicy
 
-        const lastInd = this.snake.body.length - 1;
         let newHead;
 
         //najpierw zwiększam index!!!
@@ -89,6 +88,7 @@ class Game {
 
         this.gameOver();    //uruchamiam gameover(), bo jeśli snake jest dalej na planszy, to i tak nic się nie wydarzy
 
+        // this.checkSelfCollision();
         if (!this.on) {
             return;
         }
@@ -112,6 +112,36 @@ class Game {
         }
     }
 
+    feedSnake() {
+        const lastInd = this.snake.body.length - 1;
+        const oneBeforeLastInd = this.snake.body.length - 2;
+        let newBodyPiece;
+
+        //up, down
+        if (this.snake.body[lastInd].x === this.snake.body[oneBeforeLastInd].x) {
+            //up
+            if (this.snake.body[lastInd].y > this.snake.body[oneBeforeLastInd].y) {
+                newBodyPiece = {x: this.snake.body[lastInd].x, y: this.snake.body[lastInd].y + 1};
+                //down
+            } else {
+                newBodyPiece = {x: this.snake.body[lastInd].x, y: this.snake.body[lastInd].y - 1};
+            }
+        }
+
+        //right, left
+        if (this.snake.body[lastInd].y === this.snake.body[oneBeforeLastInd].y) {
+            //right
+            if (this.snake.body[lastInd].x < this.snake.body[oneBeforeLastInd].x) {
+                newBodyPiece = {x: this.snake.body[lastInd].x - 1, y: this.snake.body[lastInd].y};
+                //left
+            } else {
+                newBodyPiece = {x: this.snake.body[lastInd].x + 1, y: this.snake.body[lastInd].y};
+            }
+        }
+
+        this.snake.body.push(newBodyPiece);
+    }
+
     changeDirection(key) {
         switch (key) {
             case 'ArrowRight': this.snake.directions = 'right';
@@ -127,6 +157,7 @@ class Game {
 
     checkFoodCollision() {
         if (this.food.x === this.snake.body[0].x && this.food.y === this.snake.body[0].y) {
+            this.feedSnake();
             this.score++;
             this.showScore();
 
@@ -140,8 +171,23 @@ class Game {
         document.querySelectorAll('.food').forEach(el => el.classList.remove('food'));
     }
 
+    checkSelfCollision() {
+        this.snake.body.forEach((el,i) => {
+            if (i !== 0 && el.x === this.snake.body[0].x && el.y === this.snake.body[0].y) {
+                console.log('kolizja');
+            };
+        })
+    }
+
+    checkWallCollision() {
+        return (this.snake.body[0].x > 9 || this.snake.body[0].x < 0 || this.snake.body[0].y > 9 || this.snake.body[0].y < 0);
+    }
+
     gameOver() {
-        if (this.snake.body[0].x > 9 || this.snake.body[0].x < 0 || this.snake.body[0].y > 9 || this.snake.body[0].y < 0) {
+        this.checkSelfCollision();
+        console.log(this.checkWallCollision());
+
+        if (this.checkWallCollision() || this.checkSelfCollision()) {
             this.on = false;
             clearInterval(this.moveInterval);
             console.log('game over');
