@@ -33,35 +33,57 @@ class Game {
     }
 
     showSnake() {
-        const index = this.index(this.snake.x, this.snake.y);
-        document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
-        this.fields[index].classList.add('snake');
+        // const index = this.index(this.snake.x, this.snake.y);
+        // document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
+        // this.fields[index].classList.add('snake');
 
         //TODO: odkomentować
 
-        // let indexes = this.snake.body.map(el => {
-        //     return this.index(el.x, el.y);
-        // });
-        // document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
-        // indexes.forEach(el => {
-        //     this.fields[el].classList.add('snake');
-        // })
+        let indexes = this.snake.body.map(el => {
+            return this.index(el.x, el.y);
+        });
+        document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
+        indexes.forEach(el => {
+            this.fields[el].classList.add('snake');
+        })
     }
 
     moveSnake() {
         //TODO: ruch snake'a: pushowanie nowej głowy, wycinanie ostatniej pozycji z tablicy
 
+        const lastInd = this.snake.body.length - 1;
+        let newHead;
+
         //najpierw zwiększam index!!!
         switch (this.snake.directions) {
-            case 'right': this.snake.x++;
+            case 'right':
+                newHead = {x: this.snake.body[0].x + 1, y: this.snake.body[0].y};
                 break;
-            case 'left': this.snake.x--;
+            case 'left':
+                newHead = {x: this.snake.body[0].x - 1, y: this.snake.body[0].y};
                 break;
-            case 'up': this.snake.y--;
+            case 'up':
+                newHead = {x: this.snake.body[0].x, y: this.snake.body[0].y - 1};
                 break;
-            case 'down': this.snake.y++;
+            case 'down':
+                newHead = {x: this.snake.body[0].x, y: this.snake.body[0].y + 1};
                 break;
         }
+
+        this.snake.body.unshift(newHead);
+        this.snake.body.pop();
+
+
+        // switch (this.snake.directions) {
+        //     case 'right': this.snake.x++;
+        //         break;
+        //     case 'left': this.snake.x--;
+        //         break;
+        //     case 'up': this.snake.y--;
+        //         break;
+        //     case 'down': this.snake.y++;
+        //         break;
+        // }
 
         //dopiero potem sprawdzam, czy w aktualnej pozycji, snake jest poza planszą:
 
@@ -76,24 +98,55 @@ class Game {
     }
 
     turnSnake(e) {
-        this.changeDirection(e);
-    }
 
-    changeDirection(e) {
         switch (e.key) {
-            case 'ArrowRight': this.snake.directions = 'right';
+            case 'ArrowRight':
+            case 'ArrowLeft':
+                if (this.snake.directions === 'down' || this.snake.directions === 'up') {
+                    this.changeDirection(e.key);
+                }
                 break;
-            case 'ArrowLeft': this.snake.directions = 'left';
-                break;
-            case 'ArrowUp': this.snake.directions = 'up';
-                break;
-            case 'ArrowDown': this.snake.directions = 'down';
+            case 'ArrowUp':
+            case 'ArrowDown':
+                console.log(e.key);
+
+                this.snake.directions === 'right' || this.snake.directions === 'left' ?
+                    this.changeDirection(e.key) : null;
                 break;
         }
+
+
+        // this.changeDirection(e);
+    }
+
+    changeDirection(key) {
+        switch (key) {
+            case 'ArrowRight': console.log('arr right');
+                break;
+            case 'ArrowLeft': console.log('arr left');
+                break;
+            case 'ArrowUp': console.log('arr up');
+                break;
+            case 'ArrowDown': console.log('arr down');
+                break;
+        }
+
+
+
+        // switch (e.key) {
+        //     case 'ArrowRight': this.snake.directions = 'right';
+        //         break;
+        //     case 'ArrowLeft': this.snake.directions = 'left';
+        //         break;
+        //     case 'ArrowUp': this.snake.directions = 'up';
+        //         break;
+        //     case 'ArrowDown': this.snake.directions = 'down';
+        //         break;
+        // }
     }
 
     checkFoodCollision() {
-        if (this.food.x === this.snake.x && this.food.y === this.snake.y) {
+        if (this.food.x === this.snake.body[0].x && this.food.y === this.snake.body[0].y) {
             this.score++;
             this.showScore();
 
@@ -108,7 +161,7 @@ class Game {
     }
 
     gameOver() {
-        if (this.snake.x > 9 || this.snake.x < 0 || this.snake.y > 9 || this.snake.y < 0) {
+        if (this.snake.body[0].x > 9 || this.snake.body[0].x < 0 || this.snake.body[0].y > 9 || this.snake.body[0].y < 0) {
             this.on = false;
             clearInterval(this.moveInterval);
             console.log('game over');

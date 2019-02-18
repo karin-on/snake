@@ -1,6 +1,5 @@
 import {Score} from './components/board/Board';
 import {Board} from './components/board/Board';
-
 import {Game} from './components/game/Game';
 
 import './main.scss';
