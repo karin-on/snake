@@ -4,7 +4,6 @@ import {Food} from "../food/Food";
 class Game {
     constructor() {
         this.snake = new Snake();
-        this.food = new Food();
         this.score = 0;
         this.on = true;
     }
@@ -17,32 +16,29 @@ class Game {
         document.querySelector('.board__score').innerHTML = this.score;
     }
 
-    isFoodInsideSnake() {
-        const randomX = this.food.x;
-        const randomY = this.food.y;
-        // let collisions = 0;
-        //
-        // this.snake.body.forEach(el => {
-        //     if (randomX === el.x && randomY === el.y) {
-        //         collisions++;
-        //     }
-        // });
-
-        return (this.snake.body.includes({x: randomX, y: randomY}));
-    }
+    // foodInsideSnake() {
+    //     const { randomX, randomY } = this.food;
+    //     const index = this.index(randomX, randomY);
+    //
+    //     while (this.fields[index].classList.contains('snake')) {
+    //         this.food = new Food();
+    //         console.log('wylosowano ponownie');
+    //     }
+    // }
 
     showFood() {
-        if (!this.isFoodInsideSnake()) {
-            this.food = new Food();
-            // this.isFoodInsideSnake();
-            // return;
-        }
+        this.food = new Food();
+        this.fields = document.querySelectorAll('.board__field');
 
         //tu chcę zmienną lokalną
         const index = this.index(this.food.x, this.food.y);
-        //tu chcę stałą globalną, więc robię z niej właściwość obiektu, z której korzystam w showSnake();
-        this.fields = document.querySelectorAll('.board__field');
 
+        while (this.fields[this.index(this.food.x, this.food.y)].classList.contains('snake')) {
+            this.food = new Food();
+            console.log('wylosowano ponownie');
+        }
+
+        //tu chcę stałą globalną, więc robię z niej właściwość obiektu, z której korzystam w showSnake();
         this.fields[index].classList.add('food');
     }
 
@@ -180,7 +176,7 @@ class Game {
 
     gameOver() {
         this.checkSelfCollision();
-        console.log(this.checkWallCollision());
+        // console.log(this.checkWallCollision());
 
         if (this.checkWallCollision() || this.checkSelfCollision()) {
             this.on = false;
@@ -199,3 +195,5 @@ class Game {
 }
 
 export {Game};
+
+
