@@ -16,29 +16,19 @@ class Game {
         document.querySelector('.board__score').innerHTML = this.score;
     }
 
-    // foodInsideSnake() {
-    //     const { randomX, randomY } = this.food;
-    //     const index = this.index(randomX, randomY);
-    //
-    //     while (this.fields[index].classList.contains('snake')) {
-    //         this.food = new Food();
-    //         console.log('wylosowano ponownie');
-    //     }
-    // }
-
-    showFood() {
-        this.food = new Food();
-        this.fields = document.querySelectorAll('.board__field');
-
-        //tu chcę zmienną lokalną
-        const index = this.index(this.food.x, this.food.y);
-
+    isFoodInsideSnake() {
         while (this.fields[this.index(this.food.x, this.food.y)].classList.contains('snake')) {
             this.food = new Food();
             console.log('wylosowano ponownie');
         }
+    }
 
-        //tu chcę stałą globalną, więc robię z niej właściwość obiektu, z której korzystam w showSnake();
+    showFood() {
+        this.food = new Food();
+        this.fields = document.querySelectorAll('.board__field');
+        this.isFoodInsideSnake();
+
+        const index = this.index(this.food.x, this.food.y);
         this.fields[index].classList.add('food');
     }
 
