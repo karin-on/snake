@@ -1,10 +1,8 @@
-import {Score} from "../board/Board";
 import {Snake} from "../snake/Snake";
 import {Food} from "../food/Food";
 
 class Game {
     constructor() {
-        // this.board = new Board();
         this.snake = new Snake();
         this.food = new Food();
         this.score = 0;
@@ -15,15 +13,31 @@ class Game {
         return x + (10 * y);
     }
 
-    showBoard() {
-        // this.board.render();
-    }
-
     showScore() {
         document.querySelector('.board__score').innerHTML = this.score;
     }
 
+    isFoodInsideSnake() {
+        const randomX = this.food.x;
+        const randomY = this.food.y;
+        // let collisions = 0;
+        //
+        // this.snake.body.forEach(el => {
+        //     if (randomX === el.x && randomY === el.y) {
+        //         collisions++;
+        //     }
+        // });
+
+        return (this.snake.body.includes({x: randomX, y: randomY}));
+    }
+
     showFood() {
+        if (!this.isFoodInsideSnake()) {
+            this.food = new Food();
+            // this.isFoodInsideSnake();
+            // return;
+        }
+
         //tu chcę zmienną lokalną
         const index = this.index(this.food.x, this.food.y);
         //tu chcę stałą globalną, więc robię z niej właściwość obiektu, z której korzystam w showSnake();
@@ -33,12 +47,6 @@ class Game {
     }
 
     showSnake() {
-        // const index = this.index(this.snake.x, this.snake.y);
-        // document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
-        // this.fields[index].classList.add('snake');
-
-        //TODO: odkomentować
-
         let indexes = this.snake.body.map(el => {
             return this.index(el.x, el.y);
         });
@@ -49,8 +57,6 @@ class Game {
     }
 
     moveSnake() {
-        //TODO: ruch snake'a: pushowanie nowej głowy, wycinanie ostatniej pozycji z tablicy
-
         let newHead;
 
         //najpierw zwiększam index!!!
@@ -72,17 +78,6 @@ class Game {
         this.snake.body.unshift(newHead);
         this.snake.body.pop();
 
-
-        // switch (this.snake.directions) {
-        //     case 'right': this.snake.x++;
-        //         break;
-        //     case 'left': this.snake.x--;
-        //         break;
-        //     case 'up': this.snake.y--;
-        //         break;
-        //     case 'down': this.snake.y++;
-        //         break;
-        // }
 
         //dopiero potem sprawdzam, czy w aktualnej pozycji, snake jest poza planszą:
 
