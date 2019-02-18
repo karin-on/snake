@@ -98,51 +98,31 @@ class Game {
     }
 
     turnSnake(e) {
-
         switch (e.key) {
             case 'ArrowRight':
             case 'ArrowLeft':
-                if (this.snake.directions === 'down' || this.snake.directions === 'up') {
-                    this.changeDirection(e.key);
-                }
+                this.snake.directions === 'down' || this.snake.directions === 'up' ?
+                    this.changeDirection(e.key) : null;
                 break;
             case 'ArrowUp':
             case 'ArrowDown':
-                console.log(e.key);
-
                 this.snake.directions === 'right' || this.snake.directions === 'left' ?
                     this.changeDirection(e.key) : null;
                 break;
         }
-
-
-        // this.changeDirection(e);
     }
 
     changeDirection(key) {
         switch (key) {
-            case 'ArrowRight': console.log('arr right');
+            case 'ArrowRight': this.snake.directions = 'right';
                 break;
-            case 'ArrowLeft': console.log('arr left');
+            case 'ArrowLeft': this.snake.directions = 'left';
                 break;
-            case 'ArrowUp': console.log('arr up');
+            case 'ArrowUp': this.snake.directions = 'up';
                 break;
-            case 'ArrowDown': console.log('arr down');
+            case 'ArrowDown': this.snake.directions = 'down';
                 break;
         }
-
-
-
-        // switch (e.key) {
-        //     case 'ArrowRight': this.snake.directions = 'right';
-        //         break;
-        //     case 'ArrowLeft': this.snake.directions = 'left';
-        //         break;
-        //     case 'ArrowUp': this.snake.directions = 'up';
-        //         break;
-        //     case 'ArrowDown': this.snake.directions = 'down';
-        //         break;
-        // }
     }
 
     checkFoodCollision() {

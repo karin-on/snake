@@ -5,14 +5,14 @@ class Snake {
         // this.directions = ['right', 'left', 'up', 'down'];
         // this.x = Math.floor(Math.random() * 10);
         // this.y = Math.floor(Math.random() * 10);
-        this.directions = 'right';
+        this.directions = 'up';
         this.x = 0;
         this.y = 0;
         this.length = 3;
         this.body = [
-            {x: 2, y: 1},
-            {x: 1, y: 1},
-            {x: 0, y: 1}
+            {x: 1, y: 7},
+            {x: 1, y: 8},
+            {x: 1, y: 9}
         ]
     }
 }
