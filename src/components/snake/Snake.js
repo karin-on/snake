@@ -8,7 +8,7 @@ class Snake {
         this.directions = 'right';
         this.x = 5;
         this.y = 5;
-        this.lenght = 3;
+        this.length = 3;
         this.body = [
             {x: 3, y: 5},
             {x: 4, y: 5},
