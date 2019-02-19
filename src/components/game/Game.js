@@ -1,5 +1,7 @@
 import {Snake} from "../snake/Snake";
 import {Food} from "../food/Food";
+import {GameOver} from "../gameOver/GameOver";
+
 
 class Game {
     constructor() {
@@ -20,7 +22,7 @@ class Game {
     isFoodInsideSnake() {
         while (this.fields[this.index(this.food.x, this.food.y)].classList.contains('snake')) {
             this.food = new Food();
-            console.log('wylosowano ponownie');
+            // console.log('wylosowano ponownie');
         }
     }
 
@@ -153,7 +155,7 @@ class Game {
     checkSelfCollision() {
         for (let i = 1; i < this.snake.body.length; i++) {
             if (this.snake.body[i].x === this.snake.body[0].x && this.snake.body[i].y === this.snake.body[0].y) {
-                console.log('kolizja');
+                // console.log('kolizja');
                 return true;
             };
         }
@@ -163,11 +165,17 @@ class Game {
         return (this.snake.body[0].x > 29 || this.snake.body[0].x < 0 || this.snake.body[0].y > 19 || this.snake.body[0].y < 0);
     }
 
+    showGameOverScreen() {
+        let gameOver = new GameOver();
+        gameOver.render();
+    }
+
     gameOver() {
         if (this.checkWallCollision() || this.checkSelfCollision()) {
             this.on = false;
             clearInterval(this.moveInterval);
-            console.log('game over');
+            this.showGameOverScreen();
+            // console.log('game over');
         }
     }
 
