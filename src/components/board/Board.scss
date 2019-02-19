@@ -3,8 +3,8 @@
   height: 490px;
   margin: 0 auto;
   display: flex;
-  flex-flow: row wrap;
-  border: 5px solid #000002a1;
+  flex-wrap: wrap;
+  border: 5px solid rgba(0, 0, 2, 0.63);
 }
 
 .board__score {
@@ -13,11 +13,11 @@
   font-size: 30px;
   font-weight: bold;
   padding: 20px 0;
-  color: #000002a1;
+  color: rgba(0, 0, 2, 0.63);
+  margin-top: -100px;
 }
 
 .board__field {
   width: 24px;
   height: 24px;
-  //border: 1px solid;
 }

@@ -1,11 +1,13 @@
 import {Score} from './components/board/Board';
 import {Board} from './components/board/Board';
 import {Game} from './components/game/Game';
+import {GameOver} from "./components/gameOver/GameOver";
 
 import './main.scss';
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    const body = document.getElementsByTagName('body');
     const root = document.getElementById('app');
 
     let score = new Score();
@@ -13,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let board = new Board();
     board.render(root);
+
+    let gameOver = new GameOver();
 
     let game = new Game();
 
