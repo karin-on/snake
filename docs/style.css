@@ -1,0 +1,42 @@
+.board {
+  width: 1480px;
+  height: 994px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  border: 5px solid #000002a1; }
+
+.board__score {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 20px 0;
+  color: #000002a1; }
+
+.board__field {
+  width: 49px;
+  height: 49px; }
+
+.snake {
+  background-color: #000002a1;
+  border: 8px; }
+
+.food {
+  background-color: #000002a1;
+  border-radius: 50%; }
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+body {
+  background-color: #A9CA9B; }
+
