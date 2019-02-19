@@ -66,7 +66,6 @@ class Game {
 
 
         //dopiero potem sprawdzam, czy w aktualnej pozycji, snake jest poza planszą:
-
         this.gameOver();    //uruchamiam gameover(), bo jeśli snake jest dalej na planszy, to i tak nic się nie wydarzy
 
         // this.checkSelfCollision();
@@ -153,11 +152,12 @@ class Game {
     }
 
     checkSelfCollision() {
-        this.snake.body.forEach((el,i) => {
-            if (i !== 0 && el.x === this.snake.body[0].x && el.y === this.snake.body[0].y) {
+        for (let i = 1; i < this.snake.body.length; i++) {
+            if (this.snake.body[i].x === this.snake.body[0].x && this.snake.body[i].y === this.snake.body[0].y) {
                 console.log('kolizja');
+                return true;
             };
-        })
+        }
     }
 
     checkWallCollision() {
@@ -165,9 +165,6 @@ class Game {
     }
 
     gameOver() {
-        this.checkSelfCollision();
-        // console.log(this.checkWallCollision());
-
         if (this.checkWallCollision() || this.checkSelfCollision()) {
             this.on = false;
             clearInterval(this.moveInterval);
