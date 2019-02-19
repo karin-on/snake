@@ -10,7 +10,7 @@ class Game {
     }
 
     index(x, y) {
-        return x + (10 * y);
+        return x + (30 * y);
     }
 
     showScore() {
@@ -160,7 +160,7 @@ class Game {
     }
 
     checkWallCollision() {
-        return (this.snake.body[0].x > 9 || this.snake.body[0].x < 0 || this.snake.body[0].y > 9 || this.snake.body[0].y < 0);
+        return (this.snake.body[0].x > 29 || this.snake.body[0].x < 0 || this.snake.body[0].y > 19 || this.snake.body[0].y < 0);
     }
 
     gameOver() {
@@ -176,7 +176,7 @@ class Game {
 
         this.moveInterval = setInterval(() => {
             this.moveSnake();
-        }, 500);
+        }, 200);
     }
 }
 

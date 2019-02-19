@@ -32,7 +32,7 @@ class Board {
     render(root) {
         this.board.classList.add(this.boardClass);
 
-        const fieldsNumber = 100;
+        const fieldsNumber = 600;
         let start = 1;
 
         while (start <= fieldsNumber) {
