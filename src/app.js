@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         game.turnSnake(e);
     });
 
-    //kolejność
-    game.showFood();
     game.showSnake();
+    game.showFood();
     game.start();
 });

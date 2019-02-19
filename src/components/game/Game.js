@@ -6,6 +6,7 @@ class Game {
         this.snake = new Snake();
         this.score = 0;
         this.on = true;
+        this.fields = document.querySelectorAll('.board__field');
     }
 
     index(x, y) {
@@ -25,7 +26,6 @@ class Game {
 
     showFood() {
         this.food = new Food();
-        this.fields = document.querySelectorAll('.board__field');
         this.isFoodInsideSnake();
 
         const index = this.index(this.food.x, this.food.y);
@@ -66,9 +66,8 @@ class Game {
 
 
         //dopiero potem sprawdzam, czy w aktualnej pozycji, snake jest poza planszą:
-        this.gameOver();    //uruchamiam gameover(), bo jeśli snake jest dalej na planszy, to i tak nic się nie wydarzy
+        this.gameOver();    //uruchamiam gameover(), bo jeśli snake jest dalej na planszy (i nie ma kolizji sam ze sobą), to i tak nic się nie wydarzy
 
-        // this.checkSelfCollision();
         if (!this.on) {
             return;
         }
