@@ -172,9 +172,17 @@ class Game {
 
     printGameOverMsg() {
         if (this.score === 1) {
-            this.gameOverScreen.gameOverMsg = `You got 1 point.`
+            this.gameOverScreen.gameOverMsg1 = `You got 1 point.`
         } else if (this.score > 1) {
-            this.gameOverScreen.gameOverMsg = `You got ${this.score} points.`
+            this.gameOverScreen.gameOverMsg1 = `You got ${this.score} points.`
+        }
+
+        if (this.score >= 5) {
+            this.gameOverScreen.gameOverMsg0 = 'Congratulations!';
+        }
+
+        if (this.checkSelfCollision()) {
+            this.gameOverScreen.gameOverMsg2 = 'You ate your own tail though. Not cool.';
         }
     }
 

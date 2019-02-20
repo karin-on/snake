@@ -6,7 +6,9 @@ class GameOverScreen {
         // this.gameOverBox = document.createElement('div');
         // this.gameOverHeading = document.createElement('h1');
         // this.gameOverButton = document.createElement('button');
-        this.gameOverMsg = 'You got 0 points. Really?';
+        this.gameOverMsg0 = '';
+        this.gameOverMsg1 = 'You got 0 points. Really?';
+        this.gameOverMsg2 = '';
     }
 
     show() {
@@ -14,7 +16,9 @@ class GameOverScreen {
 
         this.gameOverScreen.innerHTML = '<div class="game-over__box">' +
             '<h1 class="game-over__heading">Game over</h1>' +
-            `<p class="game-over__msg">${this.gameOverMsg}</p>` +
+            `<p class="game-over__msg">${this.gameOverMsg0}</p>` +
+            `<p class="game-over__msg">${this.gameOverMsg1}</p>` +
+            `<p class="game-over__msg">${this.gameOverMsg2}</p>` +
             '<button class="game-over__button">' +
                 '<span>' +
                     '<i class="game-over__button-angle fas fa-angle-double-right fa-xs"></i></span>' +
