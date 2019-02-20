@@ -1,6 +1,6 @@
-import {Snake} from "../snake/Snake";
-import {Food} from "../food/Food";
-import {GameOver} from "../gameOver/GameOver";
+import {Snake} from "../Snake/Snake";
+import {Food} from "../Food/Food";
+import {GameOverScreen} from "../GameOverScreen/GameOverScreen";
 
 
 class Game {
@@ -9,6 +9,7 @@ class Game {
         this.score = 0;
         this.on = true;
         this.fields = document.querySelectorAll('.board__field');
+        this.gameOverScreen = new GameOverScreen();
     }
 
     index(x, y) {
@@ -67,8 +68,8 @@ class Game {
         this.snake.body.pop();
 
 
-        //dopiero potem sprawdzam, czy w aktualnej pozycji, snake jest poza planszą:
-        this.gameOver();    //uruchamiam gameover(), bo jeśli snake jest dalej na planszy (i nie ma kolizji sam ze sobą), to i tak nic się nie wydarzy
+        //dopiero potem sprawdzam, czy w aktualnej pozycji, Snake jest poza planszą:
+        this.gameOver();    //uruchamiam gameover(), bo jeśli Snake jest dalej na planszy (i nie ma kolizji sam ze sobą), to i tak nic się nie wydarzy
 
         if (!this.on) {
             return;
@@ -166,8 +167,12 @@ class Game {
     }
 
     showGameOverScreen() {
-        let gameOver = new GameOver();
-        gameOver.render();
+        this.gameOverScreen.show();
+    }
+
+    hideGameOverScreen() {
+        this.gameOverScreen.hide();
+        console.log('chowam screen');
     }
 
     gameOver() {
@@ -175,7 +180,7 @@ class Game {
             this.on = false;
             clearInterval(this.moveInterval);
             this.showGameOverScreen();
-            // console.log('game over');
+            // console.log('Game over');
         }
     }
 
