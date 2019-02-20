@@ -170,6 +170,14 @@ class Game {
         this.gameOverScreen.show();
     }
 
+    printGameOverMsg() {
+        if (this.score === 1) {
+            this.gameOverScreen.gameOverMsg = `You got 1 point.`
+        } else if (this.score > 1) {
+            this.gameOverScreen.gameOverMsg = `You got ${this.score} points.`
+        }
+    }
+
     hideGameOverScreen() {
         this.gameOverScreen.hide();
         console.log('chowam screen');
@@ -179,8 +187,9 @@ class Game {
         if (this.checkWallCollision() || this.checkSelfCollision()) {
             this.on = false;
             clearInterval(this.moveInterval);
+
+            this.printGameOverMsg();
             this.showGameOverScreen();
-            // console.log('Game over');
         }
     }
 
