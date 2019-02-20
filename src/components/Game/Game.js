@@ -171,18 +171,24 @@ class Game {
     }
 
     printGameOverMsg() {
-        if (this.score === 1) {
+        if (this.score >= 5) {
+            this.gameOverScreen.gameOverMsg0 = 'Congratulations!';
+
+            if (this.checkSelfCollision()) {
+                this.gameOverScreen.gameOverMsg2 = 'You ate your own tail though. Not cool.';
+            }
+
+            if (this.checkWallCollision()) {
+                this.gameOverScreen.gameOverMsg2 = 'You hit a wall though. Ouch.';
+            }
+        }
+
+        if (!this.score) {
+            this.gameOverScreen.gameOverMsg1 = 'You got 0 points. Really?';
+        } else if (this.score === 1) {
             this.gameOverScreen.gameOverMsg1 = `You got 1 point.`
         } else if (this.score > 1) {
             this.gameOverScreen.gameOverMsg1 = `You got ${this.score} points.`
-        }
-
-        if (this.score >= 5) {
-            this.gameOverScreen.gameOverMsg0 = 'Congratulations!';
-        }
-
-        if (this.checkSelfCollision()) {
-            this.gameOverScreen.gameOverMsg2 = 'You ate your own tail though. Not cool.';
         }
     }
 
