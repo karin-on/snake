@@ -30,9 +30,8 @@ class GameOverScreen {
     }
 
     hide() {
-        this.gameOverScreen.classList.contains('Game-over__screen') ? this.gameOverScreen.remove() : null;
+        this.gameOverScreen.classList.contains('game-over__screen') ? this.gameOverScreen.remove() : null;
     }
-
 }
 
 export {GameOverScreen};

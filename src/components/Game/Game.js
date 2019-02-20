@@ -184,7 +184,7 @@ class Game {
         }
 
         if (!this.score) {
-            this.gameOverScreen.gameOverMsg1 = 'You got 0 points. Really?';
+            this.gameOverScreen.gameOverMsg1 = 'You got 0 points? Really?';
         } else if (this.score === 1) {
             this.gameOverScreen.gameOverMsg1 = `You got 1 point.`
         } else if (this.score > 1) {
