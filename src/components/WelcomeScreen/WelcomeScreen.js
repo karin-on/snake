@@ -46,7 +46,7 @@ class WelcomeScreen {
                 // console.log('start');
                 clearInterval(counting);
             }
-            
+
             this.welcomeScreen.innerHTML = '<div class="welcome__box">' +
                 `<div class="welcome__counter">${this.counter}</div>` +
                 '</div>';
