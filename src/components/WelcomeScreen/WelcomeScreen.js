@@ -46,6 +46,7 @@ class WelcomeScreen {
                 // console.log('start');
                 clearInterval(counting);
             }
+            
             this.welcomeScreen.innerHTML = '<div class="welcome__box">' +
                 `<div class="welcome__counter">${this.counter}</div>` +
                 '</div>';
@@ -54,9 +55,7 @@ class WelcomeScreen {
         setTimeout(() => {
             document.querySelector('.welcome__counter').innerHTML = 'start!';
         }, 3000);
-
     }
-
 }
 
 export {WelcomeScreen};
