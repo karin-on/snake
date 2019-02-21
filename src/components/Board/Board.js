@@ -8,6 +8,7 @@ class Score {
     render(root) {
         this.scoreField.classList.add('board__score');
         root.appendChild(this.scoreField);
+        this.scoreField.innerHTML = '0';
     }
 }
 

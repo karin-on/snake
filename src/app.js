@@ -1,6 +1,7 @@
 import {Score} from './components/Board/Board';
 import {Board} from './components/Board/Board';
 import {Game} from './components/Game/Game';
+import {WelcomeScreen} from './components/WelcomeScreen/WelcomeScreen';
 
 import './main.scss';
 
@@ -8,16 +9,30 @@ import './main.scss';
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('app');
 
-    let score = new Score();
+    const welcomeScreen = new WelcomeScreen();
+    welcomeScreen.show();
+    const score = new Score();
     score.render(root);
-    let board = new Board();
+    const board = new Board();
     board.render(root);
 
-    startNewGame();
+    document.addEventListener('click', function (e) {
+        if (e.target.matches('.welcome__start-button')) {
+            // console.log(e.target);
+            // console.log('start');
+            welcomeScreen.hide();
+
+            startNewGame();
+        }
+    });
+
 
     document.addEventListener('click', function (e) {
         if (e.target.matches('.game-over__button')) {
-            console.log('nowy klik');
+            // console.log(e.target);
+            // console.log('nowy klik');
+
+            // game.hideGameOverScreen();
             // startNewGame();
 
             location.reload();
@@ -26,14 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const startNewGame = () => {
-
-    let game = new Game();
+    const game = new Game();
 
     document.addEventListener('keydown', (e) => {
         game.turnSnake(e);
     });
 
-    // Game.hideGameOverScreen();
+    // game.hideGameOverScreen();
     game.showSnake();
     game.showFood();
     game.start();

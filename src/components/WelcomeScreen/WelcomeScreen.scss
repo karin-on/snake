@@ -1,4 +1,4 @@
-.game-over__screen {
+.welcome__screen {
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
   width: 100%;
@@ -9,22 +9,22 @@
   text-align: center;
 }
 
-.game-over__box {
+.welcome__box {
   color: #FFFFFF;
 }
 
-.game-over__heading {
+.welcome__heading {
   text-transform: uppercase;
   font-size: 90px;
   margin-bottom: 30px;
 }
 
-.game-over__msg {
+.welcome__msg {
   font-size: 20px;
   margin-bottom: 15px;
 }
 
-.game-over__button {
+.welcome__start-button {
   padding: 20px 50px;
   color: inherit;
   font-size: 30px;
@@ -36,7 +36,7 @@
   margin-top: 35px;
 }
 
-.game-over__button-angle {
+.welcome__button-angle {
   position: relative;
 }
 
