@@ -6,6 +6,7 @@ class WelcomeScreen {
         this.welcomeMsg0 = '';
         this.welcomeMsg1 = '';
         this.welcomeMsg2 = '';
+        this.counter = 3;
     }
 
     show() {
@@ -32,6 +33,30 @@ class WelcomeScreen {
     hide() {
         this.welcomeScreen.classList.contains('welcome__screen') ? this.welcomeScreen.remove() : null;
     }
+
+    showCounter() {
+        this.welcomeScreen.innerHTML = '<div class="welcome__box">' +
+            `<div class="welcome__counter">${this.counter}</div>` +
+            '</div>';
+
+        const counting = setInterval(() => {
+            this.counter--;
+
+            if (this.counter === 1) {
+                // console.log('start');
+                clearInterval(counting);
+            }
+            this.welcomeScreen.innerHTML = '<div class="welcome__box">' +
+                `<div class="welcome__counter">${this.counter}</div>` +
+                '</div>';
+        }, 1000);
+
+        setTimeout(() => {
+            document.querySelector('.welcome__counter').innerHTML = 'start!';
+        }, 3000);
+
+    }
+
 }
 
 export {WelcomeScreen};

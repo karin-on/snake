@@ -20,9 +20,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.matches('.welcome__start-button')) {
             // console.log(e.target);
             // console.log('start');
-            welcomeScreen.hide();
 
-            startNewGame();
+            welcomeScreen.showCounter();
+
+            setTimeout(() => {
+                welcomeScreen.hide();
+                startNewGame();
+            }, 4000);
         }
     });
 
