@@ -42,7 +42,7 @@ class Game {
         document.querySelectorAll('.snake').forEach(el => el.classList.remove('snake'));
         indexes.forEach(el => {
             this.fields[el].classList.add('snake');
-        })
+        });
     }
 
     moveSnake() {
@@ -156,7 +156,7 @@ class Game {
     checkSelfCollision() {
         for (let i = 1; i < this.snake.body.length; i++) {
             if (this.snake.body[i].x === this.snake.body[0].x && this.snake.body[i].y === this.snake.body[0].y) {
-                // console.log('kolizja');
+                console.log('kolizja');
                 return true;
             };
         }
