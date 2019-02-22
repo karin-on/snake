@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', (e) => {
         if (e.key === ' ') {
-            if (document.querySelector('.welcome__screen')) {
+            if (document.querySelector('.welcome__screen') && !document.querySelector('.welcome__counter')) {
                 welcomeScreen.showCounter();
 
                 setTimeout(() => {
