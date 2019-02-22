@@ -106,6 +106,105 @@
   100% {
     left: 3px; } }
 
+.welcome__screen {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center; }
+
+.welcome__box {
+  color: #FFFFFF; }
+
+.welcome__heading {
+  text-transform: uppercase;
+  font-size: 90px;
+  margin-bottom: 30px; }
+
+.welcome__msg {
+  font-size: 20px;
+  margin-bottom: 15px; }
+
+.welcome__start-button {
+  padding: 20px 50px;
+  color: inherit;
+  font-size: 30px;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin-top: 35px; }
+
+.welcome__button-angle {
+  position: relative; }
+
+.fa-angle-double-right {
+  right: 3px;
+  -webkit-animation: point-right 0.3s linear infinite alternate;
+          animation: point-right 0.3s linear infinite alternate; }
+
+.fa-angle-double-left {
+  left: 3px;
+  -webkit-animation: point-left 0.3s linear infinite alternate;
+          animation: point-left 0.3s linear infinite alternate; }
+
+@-webkit-keyframes point-right {
+  0% {
+    right: 6px; }
+  100% {
+    right: 3px; } }
+
+@keyframes point-right {
+  0% {
+    right: 6px; }
+  100% {
+    right: 3px; } }
+
+@-webkit-keyframes point-left {
+  0% {
+    left: 6px; }
+  100% {
+    left: 3px; } }
+
+@keyframes point-left {
+  0% {
+    left: 6px; }
+  100% {
+    left: 3px; } }
+
+.welcome__counter {
+  font-size: 90px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-animation: grow 1s ease-out;
+          animation: grow 1s ease-out; }
+
+@-webkit-keyframes grow {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes grow {
+  0% {
+    -webkit-transform: scale(0);
+            transform: scale(0); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
 * {
   margin: 0;
   padding: 0;
