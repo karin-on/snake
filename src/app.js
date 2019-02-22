@@ -18,12 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', function (e) {
         if (e.target.matches('.welcome__start-button')) {
-
+            const id = e.target.id;
+            
             welcomeScreen.showCounter();
 
             setTimeout(() => {
                 welcomeScreen.hide();
-                startNewGame();
+                startNewGame(id);
             }, 4000);
         }
     });
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 setTimeout(() => {
                     welcomeScreen.hide();
-                    startNewGame();
+                    startNewGame(id);
                 }, 4000);
             }
 
@@ -56,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-const startNewGame = () => {
+const startNewGame = (id) => {
     const game = new Game();
 
     document.addEventListener('keydown', (e) => {
@@ -66,5 +67,5 @@ const startNewGame = () => {
     // game.hideGameOverScreen();
     game.showSnake();
     game.showFood();
-    game.start();
+    game.start(id);
 }

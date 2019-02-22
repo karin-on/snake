@@ -207,12 +207,23 @@ class Game {
         }
     }
 
-    start() {
+    start(id) {
+        let speed;
+
+        switch (id) {
+            case 'level-1': speed = 200;
+                break;
+            case 'level-2': speed = 100;
+                break;
+            case 'level-3': speed = 50;
+                break;
+        }
+
         this.showScore();
 
         this.moveInterval = setInterval(() => {
             this.moveSnake();
-        }, 200);
+        }, speed);
     }
 }
 
