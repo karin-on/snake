@@ -55,5 +55,4 @@ const startNewGame = () => {
     game.showSnake();
     game.showFood();
     game.start();
-
 }
