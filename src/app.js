@@ -41,14 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('keydown', (e) => {
         if (e.key === ' ') {
-            if (document.querySelector('.welcome__screen') && !document.querySelector('.welcome__counter')) {
-                welcomeScreen.showCounter();
-
-                setTimeout(() => {
-                    welcomeScreen.hide();
-                    startNewGame(id);
-                }, 4000);
-            }
+            // if (document.querySelector('.welcome__screen') && !document.querySelector('.welcome__counter')) {
+            //     welcomeScreen.showCounter();
+            //
+            //     setTimeout(() => {
+            //         welcomeScreen.hide();
+            //         startNewGame(id);
+            //     }, 4000);
+            // }
 
             if (document.querySelector('.game-over__screen')) {
                 location.reload();
