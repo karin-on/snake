@@ -51,10 +51,6 @@ class WelcomeScreen {
             }
 
         }, 1000);
-
-        // setTimeout(() => {
-        //     document.querySelector('.welcome__counter').innerHTML = 'start!';
-        // }, 3000);
     }
 }
 
