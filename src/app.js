@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', function (e) {
         if (e.target.matches('.welcome__start-button')) {
-            // console.log(e.target);
-            // console.log('start');
 
             welcomeScreen.showCounter();
 
@@ -30,11 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     document.addEventListener('click', function (e) {
         if (e.target.matches('.game-over__button')) {
-            // console.log(e.target);
-            // console.log('nowy klik');
 
             // game.hideGameOverScreen();
             // startNewGame();
@@ -42,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             location.reload();
         }
     });
+
 });
 
 const startNewGame = () => {
