@@ -70,9 +70,9 @@
 
 .welcome__counter {
   font-size: 90px;
-  
-  transform: scale(0);
-  animation: grow 1s ease-out;
+
+  //transform: scale(0);
+  //animation: grow 1s ease-out;
 }
 
 @keyframes grow {
