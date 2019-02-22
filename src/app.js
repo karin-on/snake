@@ -38,6 +38,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    document.addEventListener('keydown', (e) => {
+        if (e.key === ' ') {
+            if (document.querySelector('.welcome__screen')) {
+                welcomeScreen.showCounter();
+
+                setTimeout(() => {
+                    welcomeScreen.hide();
+                    startNewGame();
+                }, 4000);
+            }
+
+            if (document.querySelector('.game-over__screen')) {
+                location.reload();
+            }
+        }
+    });
 });
 
 const startNewGame = () => {
