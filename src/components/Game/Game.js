@@ -196,15 +196,6 @@ class Game {
         this.gameOverScreen.hide();
     }
 
-    gameOver() {
-        if (this.checkWallCollision() || this.checkSelfCollision()) {
-            this.on = false;
-            clearInterval(this.moveInterval);
-            this.printGameOverMsg();
-            this.showGameOverScreen();
-        }
-    }
-
     speedUp() {
         let speedBreakPoints = [10, 20, 30, 40, 50];
         let speeds = [];
@@ -237,6 +228,21 @@ class Game {
                 this.level = 2;
                 this.speed = 100;
                 break;
+        }
+    }
+
+    gameOver() {
+        if (this.checkWallCollision() || this.checkSelfCollision()) {
+            this.on = false;
+            clearInterval(this.moveInterval);
+            this.printGameOverMsg();
+            this.showGameOverScreen();
+        }
+    }
+
+    pauseGame() {
+        if (this.score === 3) {
+            clearInterval(this.moveInterval);
         }
     }
 

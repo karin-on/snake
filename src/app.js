@@ -33,18 +33,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const isWelcomeScreen = document.querySelector('.welcome__screen');
+    const isCounterScreen = document.querySelector('.welcome__counter');
+    const isGameOverScreen = document.querySelector('.game-over__screen');
+    const levelBtns = document.querySelectorAll('.welcome__start-button');
+    
+
     document.addEventListener('keydown', (e) => {
-        if (document.querySelector('.welcome__screen') && !document.querySelector('.welcome__counter')
+
+        //navigating between levels
+        if (isWelcomeScreen && !isCounterScreen
             && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
 
-            const levelBtns = document.querySelectorAll('.welcome__start-button');
-            levelBtns.forEach((el,i) => {
+            levelBtns.forEach(el => {
                 el.classList.contains('active') ? el.classList.remove('active') : el.classList.add('active');
             });
         }
 
+        //starting game
         if (e.key === ' ' || e.key === 'Enter') {
-            if (document.querySelector('.welcome__screen') && !document.querySelector('.welcome__counter')) {
+            if (isWelcomeScreen && !isCounterScreen) {
                 const activeLevelBtnID = document.querySelector('.welcome__start-button.active').getAttribute('id');
 
                 welcomeScreen.showCounter();
@@ -55,10 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 2000);
             }
 
-            if (document.querySelector('.game-over__screen')) {
+            //re-starting game
+            if (isGameOverScreen) {
                 location.reload();
             }
         }
+
+        // if (!isWelcomeScreen && !isCounterScreen && !isGameOverScreen
+        //         && e.key === ' ') {
+        //     game.pauseGame();
+        // }
     });
 });
 
