@@ -45,7 +45,7 @@ class Game {
         });
     }
 
-    moveSnake() {
+    moveSnake(id) {
         let newHead;
 
         //najpierw zwiększam index!!!
@@ -75,6 +75,7 @@ class Game {
             return;
         }
 
+        // this.speedUp(id);
         this.showSnake();
         this.checkFoodCollision();
     }
@@ -207,6 +208,29 @@ class Game {
         }
     }
 
+    // speedUp(id) {
+    //     let speedBreakPoints = [5, 10, 15, 20, 25];
+    //     let speeds = [];
+    //
+    //     switch (id) {
+    //         case 'level-1':
+    //             speeds = [180, 160, 140, 120, 100];
+    //             // console.log(speeds);
+    //             break;
+    //         case 'level-2':
+    //             speeds = [90, 80, 70, 60, 50];
+    //             // console.log(speeds);
+    //             break;
+    //     }
+    //
+    //     speedBreakPoints.forEach((el,i) => {
+    //         if (this.score === el) {
+    //             clearInterval(this.moveInterval);
+    //             this.moveInterval = setInterval(, )
+    //         }
+    //     })
+    // }
+
     start(id) {
         let speed;
 
@@ -215,14 +239,14 @@ class Game {
                 break;
             case 'level-2': speed = 100;
                 break;
-            case 'level-3': speed = 50;
-                break;
+            // case 'level-3': speed = 50;
+            //     break;
         }
 
         this.showScore();
 
         this.moveInterval = setInterval(() => {
-            this.moveSnake();
+            this.moveSnake(id);
         }, speed);
     }
 }
