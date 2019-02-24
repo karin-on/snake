@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const board = new Board();
     board.render(root);
 
-    document.addEventListener('click', function (e) {
+    document.addEventListener('click', (e) => {
         if (e.target.matches('.welcome__start-button')) {
             const id = e.target.id;
             
@@ -25,30 +25,35 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 welcomeScreen.hide();
                 startNewGame(id);
-            }, 4000);
+            }, 2000);
         }
-    });
 
-    document.addEventListener('click', function (e) {
         if (e.target.matches('.game-over__button')) {
-
-            // game.hideGameOverScreen();
-            // startNewGame();
-
             location.reload();
         }
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === ' ') {
-            // if (document.querySelector('.welcome__screen') && !document.querySelector('.welcome__counter')) {
-            //     welcomeScreen.showCounter();
-            //
-            //     setTimeout(() => {
-            //         welcomeScreen.hide();
-            //         startNewGame(id);
-            //     }, 4000);
-            // }
+        if (document.querySelector('.welcome__screen') && !document.querySelector('.welcome__counter')
+            && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+
+            const levelBtns = document.querySelectorAll('.welcome__start-button');
+            levelBtns.forEach((el,i) => {
+                el.classList.contains('active') ? el.classList.remove('active') : el.classList.add('active');
+            });
+        }
+
+        if (e.key === ' ' || e.key === 'Enter') {
+            if (document.querySelector('.welcome__screen') && !document.querySelector('.welcome__counter')) {
+                const activeLevelBtnID = document.querySelector('.welcome__start-button.active').getAttribute('id');
+
+                welcomeScreen.showCounter();
+
+                setTimeout(() => {
+                    welcomeScreen.hide();
+                    startNewGame(activeLevelBtnID);
+                }, 2000);
+            }
 
             if (document.querySelector('.game-over__screen')) {
                 location.reload();

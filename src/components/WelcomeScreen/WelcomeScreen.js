@@ -4,8 +4,6 @@ class WelcomeScreen {
     constructor() {
         this.welcomeScreen = document.createElement('div');
         this.welcomeMsg0 = 'Choose your level';
-        // this.welcomeMsg1 = '';
-        // this.welcomeMsg2 = '';
         this.counter = 3;
     }
 
@@ -17,26 +15,18 @@ class WelcomeScreen {
         this.welcomeScreen.innerHTML = '<div class="welcome__box">' +
             '<h1 class="welcome__heading">Ready to play ?</h1>' +
             `<p class="welcome__msg">${this.welcomeMsg0}</p>` +
-            // `<p class="welcome__msg">${this.welcomeMsg1}</p>` +
-            // `<p class="welcome__msg">${this.welcomeMsg2}</p>` +
-            '<button id="level-1" class="welcome__start-button">' +
+            `<button id="level-1" class="welcome__start-button active">` +
                 '<span>' +
                     '<i class="welcome__button-angle fas fa-angle-double-right fa-xs"></i></span>' +
                         'level 1' +
                     '<i class="welcome__button-angle fas fa-angle-double-left fa-xs"></i>' +
             '</button>' +
-            '<button id="level-2" class="welcome__start-button">' +
+            `<button id="level-2" class="welcome__start-button">` +
                 '<span>' +
                     '<i class="welcome__button-angle fas fa-angle-double-right fa-xs"></i></span>' +
                         'level 2' +
                     '<i class="welcome__button-angle fas fa-angle-double-left fa-xs"></i>' +
             '</button>' +
-            // '<button id="level-3" class="welcome__start-button">' +
-            //     '<span>' +
-            //         '<i class="welcome__button-angle fas fa-angle-double-right fa-xs"></i></span>' +
-            //             'level 3' +
-            //         '<i class="welcome__button-angle fas fa-angle-double-left fa-xs"></i>' +
-            // '</button>' +
             '</div>';
 
         body.appendChild(this.welcomeScreen);
@@ -62,7 +52,7 @@ class WelcomeScreen {
                 document.querySelector('.welcome__counter').innerHTML = 'start!';
             }
 
-        }, 1000);
+        }, 500);
     }
 }
 
