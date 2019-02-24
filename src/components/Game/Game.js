@@ -74,7 +74,6 @@ class Game {
         if (!this.on) {
             return;
         }
-
         this.speedUp();
         this.showSnake();
         this.checkFoodCollision();
@@ -202,7 +201,6 @@ class Game {
         if (this.checkWallCollision() || this.checkSelfCollision()) {
             this.on = false;
             clearInterval(this.moveInterval);
-
             this.printGameOverMsg();
             this.showGameOverScreen();
         }
