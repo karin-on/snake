@@ -194,7 +194,6 @@ class Game {
 
     hideGameOverScreen() {
         this.gameOverScreen.hide();
-        console.log('chowam screen');
     }
 
     gameOver() {
