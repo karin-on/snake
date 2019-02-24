@@ -140,10 +140,16 @@
   font-size: 30px;
   font-family: inherit;
   background-color: transparent;
-  border: none;
+  border: 2px solid transparent;
   cursor: pointer;
   outline: none;
-  margin-top: 35px; }
+  margin: 35px 10px 0; }
+
+.welcome__start-button.active {
+  border-bottom: 2px solid #fff; }
+
+.welcome__start-button:hover {
+  border-bottom: 2px solid #fff; }
 
 .welcome__button-angle {
   position: relative; }
@@ -184,22 +190,6 @@
 
 .welcome__counter {
   font-size: 90px; }
-
-@-webkit-keyframes grow {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
-
-@keyframes grow {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
 
 * {
   margin: 0;
