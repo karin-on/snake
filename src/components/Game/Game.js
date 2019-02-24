@@ -45,7 +45,7 @@ class Game {
         });
     }
 
-    moveSnake(id) {
+    moveSnake() {
         let newHead;
 
         //najpierw zwiększam index!!!
@@ -75,7 +75,7 @@ class Game {
             return;
         }
 
-        // this.speedUp(id);
+        this.speedUp();
         this.showSnake();
         this.checkFoodCollision();
     }
@@ -159,7 +159,7 @@ class Game {
             if (this.snake.body[i].x === this.snake.body[0].x && this.snake.body[i].y === this.snake.body[0].y) {
                 console.log('kolizja');
                 return true;
-            };
+            }
         }
     }
 
@@ -208,46 +208,45 @@ class Game {
         }
     }
 
-    // speedUp(id) {
-    //     let speedBreakPoints = [5, 10, 15, 20, 25];
-    //     let speeds = [];
-    //
-    //     switch (id) {
-    //         case 'level-1':
-    //             speeds = [180, 160, 140, 120, 100];
-    //             // console.log(speeds);
-    //             break;
-    //         case 'level-2':
-    //             speeds = [90, 80, 70, 60, 50];
-    //             // console.log(speeds);
-    //             break;
-    //     }
-    //
-    //     speedBreakPoints.forEach((el,i) => {
-    //         if (this.score === el) {
-    //             clearInterval(this.moveInterval);
-    //             this.moveInterval = setInterval(, )
-    //         }
-    //     })
-    // }
+    speedUp() {
+        let speedBreakPoints = [10, 20, 30, 40, 50];
+        let speeds = [];
 
-    start(id) {
-        let speed;
-
-        switch (id) {
-            case 'level-1': speed = 200;
+        switch (this.level) {
+            case 1:
+                speeds = [180, 160, 140, 120, 100];
                 break;
-            case 'level-2': speed = 100;
+            case 2:
+                speeds = [90, 80, 70, 60, 50];
                 break;
-            // case 'level-3': speed = 50;
-            //     break;
         }
 
-        this.showScore();
+        speedBreakPoints.forEach((el,i) => {
+            if (this.score === el) {
+                clearInterval(this.moveInterval);
+                this.speed = speeds[i];
+                this.start();
+            }
+        })
+    }
 
+    setLevel(id) {
+        switch (id) {
+            case 'level-1':
+                this.level = 1;
+                this.speed = 200;
+                break;
+            case 'level-2':
+                this.level = 2;
+                this.speed = 100;
+                break;
+        }
+    }
+
+    start() {
         this.moveInterval = setInterval(() => {
-            this.moveSnake(id);
-        }, speed);
+            this.moveSnake();
+        }, this.speed);
     }
 }
 

@@ -67,5 +67,6 @@ const startNewGame = (id) => {
     // game.hideGameOverScreen();
     game.showSnake();
     game.showFood();
-    game.start(id);
+    game.setLevel(id);
+    game.start();
 }
