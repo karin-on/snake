@@ -52,5 +52,9 @@ Apart from the obvious:
 
 ## Previews
 
- ![winnie-game_prev1](./images/winnie-game_prev1.png)   ![winnie-game_prev2](./images/winnie-game_prev2.png)
+![winnie-game_prev1](./images/snake_prev1.png)
+
+![winnie-game_prev2](./images/snake_prev2.png)
+
+![winnie-game_prev3](./images/snake_prev3.png)
 
