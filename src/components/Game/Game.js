@@ -10,6 +10,7 @@ class Game {
         this.on = true;
         this.fields = document.querySelectorAll('.board__field');
         this.gameOverScreen = new GameOverScreen();
+        this.paused = false;
     }
 
     index(x, y) {
@@ -156,7 +157,7 @@ class Game {
     checkSelfCollision() {
         for (let i = 1; i < this.snake.body.length; i++) {
             if (this.snake.body[i].x === this.snake.body[0].x && this.snake.body[i].y === this.snake.body[0].y) {
-                console.log('kolizja');
+                // console.log('kolizja');
                 return true;
             }
         }
@@ -240,9 +241,11 @@ class Game {
         }
     }
 
-    pauseGame() {
-        if (this.score === 3) {
-            clearInterval(this.moveInterval);
+    pause(e) {
+        if (e.key === ' ') {
+            console.log('pauza');
+            this.paused = !this.paused;
+            this.paused ? clearInterval(this.moveInterval) : this.start();
         }
     }
 

@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const board = new Board();
     board.render(root);
 
+
     document.addEventListener('click', (e) => {
         if (e.target.matches('.welcome__start-button')) {
             const id = e.target.id;
-            
+
             welcomeScreen.showCounter();
 
             setTimeout(() => {
@@ -33,26 +34,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const isWelcomeScreen = document.querySelector('.welcome__screen');
-    const isCounterScreen = document.querySelector('.welcome__counter');
-    const isGameOverScreen = document.querySelector('.game-over__screen');
-    const levelBtns = document.querySelectorAll('.welcome__start-button');
-    
+
 
     document.addEventListener('keydown', (e) => {
+        const isWelcomeScreen = document.querySelector('.welcome__screen');
+        const isCounterScreen = document.querySelector('.welcome__counter');
+        const isGameOverScreen = document.querySelector('.game-over__screen');
+        const levelBtns = document.querySelectorAll('.welcome__start-button');
 
         //navigating between levels
-        if (isWelcomeScreen && !isCounterScreen
-            && (e.key === 'ArrowRight' || e.key === 'ArrowLeft')) {
+        if (isWelcomeScreen && !isCounterScreen) {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                levelBtns.forEach(el => {
+                    el.classList.contains('active') ? el.classList.remove('active') : el.classList.add('active');
+                });
+            }
 
-            levelBtns.forEach(el => {
-                el.classList.contains('active') ? el.classList.remove('active') : el.classList.add('active');
-            });
-        }
-
-        //starting game
-        if (e.key === ' ' || e.key === 'Enter') {
-            if (isWelcomeScreen && !isCounterScreen) {
+            if (e.key === ' ' || e.key === 'Enter') {
                 const activeLevelBtnID = document.querySelector('.welcome__start-button.active').getAttribute('id');
 
                 welcomeScreen.showCounter();
@@ -62,30 +60,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     startNewGame(activeLevelBtnID);
                 }, 2000);
             }
+        }
 
-            //re-starting game
-            if (isGameOverScreen) {
+        //restarting game
+        if (isGameOverScreen) {
+            if (e.key === ' ' || e.key === 'Enter') {
                 location.reload();
             }
         }
-
-        // if (!isWelcomeScreen && !isCounterScreen && !isGameOverScreen
-        //         && e.key === ' ') {
-        //     game.pauseGame();
-        // }
     });
+
+    const startNewGame = (id) => {
+        const game = new Game();
+
+        document.addEventListener('keydown', (e) => {
+            game.pause(e);
+            game.turnSnake(e);
+        });
+
+        game.showSnake();
+        game.showFood();
+        game.setLevel(id);
+        game.start();
+    }
+
 });
 
-const startNewGame = (id) => {
-    const game = new Game();
-
-    document.addEventListener('keydown', (e) => {
-        game.turnSnake(e);
-    });
-
-    // game.hideGameOverScreen();
-    game.showSnake();
-    game.showFood();
-    game.setLevel(id);
-    game.start();
-}
