@@ -43,20 +43,10 @@ class Board {
             start++;
         }
 
-        root.appendChild(this.board);
-    }
-
-    renderPauseIcon() {
         this.pauseIcon.classList.add('board__pause-icon');
-        this.pauseIcon.innerHTML = '&#10073;&#10073;';
 
-        let app = document.querySelector('#app');
-        let score = document.querySelector('.board__score');
-        app.insertBefore(this.pauseIcon, score);
-    }
-
-    hidePauseIcon() {
-        this.pauseIcon.remove();
+        root.appendChild(this.pauseIcon);
+        root.appendChild(this.board);
     }
 }
 

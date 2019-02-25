@@ -233,15 +233,16 @@ class Game {
     }
 
     showPause() {
-
+        const pauseIcon = document.querySelector('.board__pause-icon');
+        pauseIcon.innerHTML = this.paused ? '&#10073;&#10073;' : '';
     }
 
     pause(e) {
         if (e.key === ' ') {
-            console.log('pauza');
             this.paused = !this.paused;
             this.paused ? clearInterval(this.moveInterval) : this.start();
         }
+        this.showPause();
     }
 
     gameOver() {

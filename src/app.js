@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const board = new Board();
     board.render(root);
 
-
     document.addEventListener('click', (e) => {
         if (e.target.matches('.welcome__start-button')) {
             const id = e.target.id;
@@ -33,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
             location.reload();
         }
     });
-
-
 
     document.addEventListener('keydown', (e) => {
         const isWelcomeScreen = document.querySelector('.welcome__screen');
@@ -81,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
         game.showSnake();
         game.showFood();
         game.setLevel(id);
-        board.renderPauseIcon();
         game.start();
     }
 
