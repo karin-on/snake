@@ -10,6 +10,7 @@ class Game {
         this.on = true;
         this.fields = document.querySelectorAll('.board__field');
         this.gameOverScreen = new GameOverScreen();
+        this.paused = false;
     }
 
     index(x, y) {
@@ -156,7 +157,7 @@ class Game {
     checkSelfCollision() {
         for (let i = 1; i < this.snake.body.length; i++) {
             if (this.snake.body[i].x === this.snake.body[0].x && this.snake.body[i].y === this.snake.body[0].y) {
-                console.log('kolizja');
+                // console.log('kolizja');
                 return true;
             }
         }
@@ -196,15 +197,6 @@ class Game {
         this.gameOverScreen.hide();
     }
 
-    gameOver() {
-        if (this.checkWallCollision() || this.checkSelfCollision()) {
-            this.on = false;
-            clearInterval(this.moveInterval);
-            this.printGameOverMsg();
-            this.showGameOverScreen();
-        }
-    }
-
     speedUp() {
         let speedBreakPoints = [10, 20, 30, 40, 50];
         let speeds = [];
@@ -237,6 +229,28 @@ class Game {
                 this.level = 2;
                 this.speed = 100;
                 break;
+        }
+    }
+
+    showPause() {
+        const pauseIcon = document.querySelector('.board__pause-icon');
+        pauseIcon.innerHTML = this.paused ? '&#10073;&#10073;' : '';
+    }
+
+    pause(e) {
+        if (e.key === ' ') {
+            this.paused = !this.paused;
+            this.paused ? clearInterval(this.moveInterval) : this.start();
+            this.showPause();
+        }
+    }
+
+    gameOver() {
+        if (this.checkWallCollision() || this.checkSelfCollision()) {
+            this.on = false;
+            clearInterval(this.moveInterval);
+            this.printGameOverMsg();
+            this.showGameOverScreen();
         }
     }
 
