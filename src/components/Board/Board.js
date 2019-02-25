@@ -26,14 +26,14 @@ class Field {
 
 class Board {
     constructor() {
+        this.pauseIcon = document.createElement('span');
         this.board = document.createElement('div');
         this.boardClass = 'board';
-        this.pauseIcon = document.createElement('span');
     }
 
     render(root) {
+        this.pauseIcon.classList.add('board__pause-icon');
         this.board.classList.add(this.boardClass);
-
         const fieldsNumber = 600;
         let start = 1;
 
@@ -42,8 +42,6 @@ class Board {
             field.render(this.board);
             start++;
         }
-
-        this.pauseIcon.classList.add('board__pause-icon');
 
         root.appendChild(this.pauseIcon);
         root.appendChild(this.board);

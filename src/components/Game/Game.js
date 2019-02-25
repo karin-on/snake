@@ -241,8 +241,8 @@ class Game {
         if (e.key === ' ') {
             this.paused = !this.paused;
             this.paused ? clearInterval(this.moveInterval) : this.start();
+            this.showPause();
         }
-        this.showPause();
     }
 
     gameOver() {
