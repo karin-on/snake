@@ -2,7 +2,7 @@ import './Board.scss';
 
 class Score {
     constructor() {
-        this.scoreField = document.createElement('span');
+        this.scoreField = document.createElement('div');
     }
 
     render(root) {
