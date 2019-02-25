@@ -39,7 +39,8 @@ Apart from the obvious:
 - If the snake hits a wall, game is over. You cannot get through a wall to the other side of the board.
 - You can choose a level. They differ in speed.
 - The snake speeds up every 10 points (up to 50) you get.
-- You can use your keyboard (arrows, space, enter) to navigate and (re-)start the game.
+- You can use your keyboard (arrows, space, enter) to navigate and (re)start the game.
+- You can pause the game!!! :clap: ​ Just press the space.
 - The game-over messages differ depending on your final score.
 
 
