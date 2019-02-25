@@ -1,3 +1,20 @@
+.board__pause-icon {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: rgba(0, 0, 2, 0.63);
+  font-size: 30px;
+  letter-spacing: 3px; }
+
+.board__score {
+  display: block;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 20px 0;
+  color: rgba(0, 0, 2, 0.63);
+  margin-top: -100px; }
+
 .board {
   width: 730px;
   height: 490px;
@@ -8,15 +25,6 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   border: 5px solid rgba(0, 0, 2, 0.63); }
-
-.board__score {
-  display: block;
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  padding: 20px 0;
-  color: rgba(0, 0, 2, 0.63);
-  margin-top: -100px; }
 
 .board__field {
   width: 24px;
