@@ -232,13 +232,8 @@ class Game {
         }
     }
 
-    gameOver() {
-        if (this.checkWallCollision() || this.checkSelfCollision()) {
-            this.on = false;
-            clearInterval(this.moveInterval);
-            this.printGameOverMsg();
-            this.showGameOverScreen();
-        }
+    showPause() {
+
     }
 
     pause(e) {
@@ -246,6 +241,15 @@ class Game {
             console.log('pauza');
             this.paused = !this.paused;
             this.paused ? clearInterval(this.moveInterval) : this.start();
+        }
+    }
+
+    gameOver() {
+        if (this.checkWallCollision() || this.checkSelfCollision()) {
+            this.on = false;
+            clearInterval(this.moveInterval);
+            this.printGameOverMsg();
+            this.showGameOverScreen();
         }
     }
 

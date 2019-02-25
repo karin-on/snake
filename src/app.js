@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         game.showSnake();
         game.showFood();
         game.setLevel(id);
+        board.renderPauseIcon();
         game.start();
     }
 
