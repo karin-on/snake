@@ -1,39 +1,31 @@
 import './Board.scss';
 
-class Score {
-    constructor() {
-        this.scoreField = document.createElement('div');
-    }
-
-    render(root) {
-        this.scoreField.classList.add('board__score');
-        root.appendChild(this.scoreField);
-        this.scoreField.innerHTML = '0';
-    }
-}
-
 class Field {
     constructor() {
         this.field = document.createElement('div');
-        this.fieldClass = 'board__field';
     }
 
     render(board) {
-        this.field.classList.add(this.fieldClass);
+        this.field.classList.add('board__field');
         board.appendChild(this.field);
     }
 }
 
 class Board {
     constructor() {
-        this.pauseIcon = document.createElement('span');
         this.board = document.createElement('div');
-        this.boardClass = 'board';
+        this.scoreField = document.createElement('div');
+        this.pauseIcon = document.createElement('span');
     }
 
-    render(root) {
+    render() {
+        const root = document.getElementById('app');
+
         this.pauseIcon.classList.add('board__pause-icon');
-        this.board.classList.add(this.boardClass);
+        this.scoreField.classList.add('board__score');
+        this.scoreField.innerHTML = '0';
+        this.board.classList.add('board');
+
         const fieldsNumber = 600;
         let start = 1;
 
@@ -44,9 +36,9 @@ class Board {
         }
 
         root.appendChild(this.pauseIcon);
+        root.appendChild(this.scoreField);
         root.appendChild(this.board);
     }
 }
 
 export {Board};
-export {Score};

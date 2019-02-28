@@ -1,4 +1,3 @@
-import {Score} from './components/Board/Board';
 import {Board} from './components/Board/Board';
 import {Game} from './components/Game/Game';
 import {WelcomeScreen} from './components/WelcomeScreen/WelcomeScreen';
@@ -7,14 +6,11 @@ import './main.scss';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const root = document.getElementById('app');
 
     const welcomeScreen = new WelcomeScreen();
     welcomeScreen.show();
-    const score = new Score();
-    score.render(root);
     const board = new Board();
-    board.render(root);
+    board.render();
 
     document.addEventListener('click', (e) => {
         if (e.target.matches('.welcome__start-button')) {
@@ -80,6 +76,5 @@ document.addEventListener('DOMContentLoaded', () => {
         game.setLevel(id);
         game.start();
     }
-
 });
 
