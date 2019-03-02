@@ -37,6 +37,7 @@ The project will be running in your browser at <http://localhost:8080/>.
 Apart from the obvious:
 
 - If the snake hits a wall, game is over. You cannot get through a wall to the other side of the board.
+- At the start the snake moves in a random direction (up, right or left).
 - You can choose a level. They differ in speed.
 - The snake speeds up every 10 points (up to 50) you get.
 - You can use your keyboard (arrows, space, enter) to navigate and (re)start the game.
