@@ -171,13 +171,12 @@ class Game {
     }
 
     printGameOverMsg() {
-        if (this.score >= 5) {
-            this.gameOverScreen.gameOverMsg0 = 'Congratulations!';
+        if (this.score >= 10) {
+            this.gameOverScreen.gameOverMsg0 = 'Well done.';
 
             if (this.checkSelfCollision()) {
                 this.gameOverScreen.gameOverMsg2 = 'You ate your own tail though. Not cool.';
             }
-
             if (this.checkWallCollision()) {
                 this.gameOverScreen.gameOverMsg2 = 'You hit a wall though. Ouch.';
             }
@@ -189,6 +188,10 @@ class Game {
             this.gameOverScreen.gameOverMsg1 = `You got 1 point.`
         } else if (this.score > 1) {
             this.gameOverScreen.gameOverMsg1 = `You got ${this.score} points.`
+        }
+
+        if (this.score >= 30) {
+            this.gameOverScreen.gameOverMsg0 = 'Congratulations!';
         }
     }
 
