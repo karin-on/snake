@@ -50,7 +50,7 @@ class Game {
         let newHead;
 
         //najpierw zwiększam index!!!
-        switch (this.snake.directions) {
+        switch (this.snake.direction) {
             case 'right':
                 newHead = {x: this.snake.body[0].x + 1, y: this.snake.body[0].y};
                 break;
@@ -67,8 +67,7 @@ class Game {
 
         this.snake.body.unshift(newHead);
         this.snake.body.pop();
-
-
+        
         //dopiero potem sprawdzam, czy w aktualnej pozycji, Snake jest poza planszą:
         this.gameOver();    //uruchamiam gameover(), bo jeśli Snake jest dalej na planszy (i nie ma kolizji sam ze sobą), to i tak nic się nie wydarzy
 
@@ -84,12 +83,12 @@ class Game {
         switch (e.key) {
             case 'ArrowRight':
             case 'ArrowLeft':
-                this.snake.directions === 'down' || this.snake.directions === 'up' ?
+                this.snake.direction === 'down' || this.snake.direction === 'up' ?
                     this.changeDirection(e.key) : null;
                 break;
             case 'ArrowUp':
             case 'ArrowDown':
-                this.snake.directions === 'right' || this.snake.directions === 'left' ?
+                this.snake.direction === 'right' || this.snake.direction === 'left' ?
                     this.changeDirection(e.key) : null;
                 break;
         }
@@ -127,13 +126,13 @@ class Game {
 
     changeDirection(key) {
         switch (key) {
-            case 'ArrowRight': this.snake.directions = 'right';
+            case 'ArrowRight': this.snake.direction = 'right';
                 break;
-            case 'ArrowLeft': this.snake.directions = 'left';
+            case 'ArrowLeft': this.snake.direction = 'left';
                 break;
-            case 'ArrowUp': this.snake.directions = 'up';
+            case 'ArrowUp': this.snake.direction = 'up';
                 break;
-            case 'ArrowDown': this.snake.directions = 'down';
+            case 'ArrowDown': this.snake.direction = 'down';
                 break;
         }
     }
